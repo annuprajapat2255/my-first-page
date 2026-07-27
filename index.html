@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameHub - Your Ultimate Gaming Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #0a0e27;
+            color: #fff;
+        }
+
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, #1a1f3a 0%, #2d2e44 100%);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #00d4ff, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #00d4ff;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a1f3a 0%, #2d2e44 100%);
+            padding: 100px 20px;
+            text-align: center;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #00d4ff, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #b0b0b0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 40px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00d4ff, #7c3aed);
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid #00d4ff;
+            color: #00d4ff;
+            font-weight: bold;
+        }
+
+        .btn-secondary:hover {
+            background: #00d4ff;
+            color: #0a0e27;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 20px;
+            background-color: #0f1535;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #00d4ff;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #1a1f3a 0%, #2d2e44 100%);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: 0.3s;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .feature-card:hover {
+            border-color: #00d4ff;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .feature-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            color: #00d4ff;
+        }
+
+        .feature-card p {
+            color: #b0b0b0;
+        }
+
+        /* Games Section */
+        .games {
+            padding: 80px 20px;
+            background-color: #0a0e27;
+        }
+
+        .games h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #00d4ff;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .game-card {
+            background: linear-gradient(135deg, #1a1f3a 0%, #2d2e44 100%);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: 0.3s;
+            cursor: pointer;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.3);
+        }
+
+        .game-card-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #7c3aed, #00d4ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .game-card-content {
+            padding: 20px;
+        }
+
+        .game-card h3 {
+            margin-bottom: 0.5rem;
+            color: #00d4ff;
+        }
+
+        .game-card p {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .game-card .rating {
+            color: #ffc107;
+            font-size: 0.9rem;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, #7c3aed 0%, #00d4ff 100%);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #fff;
+        }
+
+        /* Footer */
+        footer {
+            background: #0f1535;
+            padding: 30px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        footer p {
+            color: #b0b0b0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                margin: 5px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">🎮 GameHub</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#games">Games</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Level Up Your Gaming Experience</h1>
+            <p>Discover thousands of games and join millions of gamers worldwide</p>
+            <button class="btn btn-primary">Play Now</button>
+            <button class="btn btn-secondary">Explore Games</button>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2>Why Choose GameHub?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon">⚡</div>
+                    <h3>Lightning Fast</h3>
+                    <p>Experience ultra-fast load times and smooth gameplay</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🏆</div>
+                    <h3>Compete & Win</h3>
+                    <p>Join tournaments and compete with players worldwide</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">👥</div>
+                    <h3>Community</h3>
+                    <p>Connect with friends and make new gaming buddies</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🎯</div>
+                    <h3>Achievements</h3>
+                    <p>Unlock badges and showcase your gaming prowess</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🔐</div>
+                    <h3>Secure</h3>
+                    <p>Your account and data are protected with top security</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🎁</div>
+                    <h3>Daily Rewards</h3>
+                    <p>Earn rewards and unlock exclusive content daily</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Games Section -->
+    <section class="games" id="games">
+        <div class="container">
+            <h2>Popular Games</h2>
+            <div class="games-grid">
+                <div class="game-card">
+                    <div class="game-card-image">🎮</div>
+                    <div class="game-card-content">
+                        <h3>Cyber Quest</h3>
+                        <p>Immerse yourself in a futuristic cyberpunk adventure</p>
+                        <div class="rating">⭐⭐⭐⭐⭐ 4.9/5</div>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-card-image">🚀</div>
+                    <div class="game-card-content">
+                        <h3>Space Odyssey</h3>
+                        <p>Explore the galaxy and discover new worlds</p>
+                        <div class="rating">⭐⭐⭐⭐⭐ 4.8/5</div>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-card-image">⚔️</div>
+                    <div class="game-card-content">
+                        <h3>Dragon Slayer</h3>
+                        <p>Epic fantasy RPG with dragons and magic</p>
+                        <div class="rating">⭐⭐⭐⭐⭐ 4.9/5</div>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-card-image">🏎️</div>
+                    <div class="game-card-content">
+                        <h3>Speed Racing</h3>
+                        <p>Feel the adrenaline rush in high-speed races</p>
+                        <div class="rating">⭐⭐⭐⭐ 4.7/5</div>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-card-image">🎸</div>
+                    <div class="game-card-content">
+                        <h3>Music Legends</h3>
+                        <p>Show off your rhythm and become a music star</p>
+                        <div class="rating">⭐⭐⭐⭐⭐ 4.9/5</div>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-card-image">🧩</div>
+                    <div class="game-card-content">
+                        <h3>Puzzle Master</h3>
+                        <p>Challenge your mind with mind-bending puzzles</p>
+                        <div class="rating">⭐⭐⭐⭐ 4.6/5</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="contact">
+        <div class="container">
+            <h2>Ready to Join the Gaming Revolution?</h2>
+            <p>Start your journey with GameHub today and unlock unlimited gaming fun!</p>
+            <button class="btn btn-primary">Get Started Now</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 GameHub. All rights reserved. | Privacy Policy | Terms of Service</p>
+        </div>
+    </footer>
+</body>
+</html>
